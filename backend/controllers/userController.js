@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs")
 // const { generateToken, verifyToken } = require("../services/sessions")
 
 
-const register = async (req, res, next) => {
+const register = async (req, res) => {
     try {
         let { userName, email, password } = req.body
         const newUser = new userModel({
@@ -22,7 +22,7 @@ const register = async (req, res, next) => {
     }
 }
 
-const login = async (req, res) => {
+const SignIn = async (req, res) => {
     try {
         const { email, password } = req.body
         const user = await userModel.findOne({ email })
@@ -40,4 +40,4 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = {register, login}
+module.exports = {register, SignIn}

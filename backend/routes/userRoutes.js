@@ -1,8 +1,8 @@
 const userRoutes = require("express").Router()
-const {register, viewUsers, login} = require("../controllers/userController")
+const {register, viewUsers, SignIn} = require("../controllers/userController")
 
 userRoutes.post("/register", register);
-userRoutes.post("/login", login)
+userRoutes.post("/login", SignIn)
 // userRoutes.get("/viewUsers", viewUsers);
 
-module.exports = userRoutesrs
+module.exports = userRoutes

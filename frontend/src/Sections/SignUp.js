@@ -12,10 +12,19 @@ const SignUp = () =>{
   const navigate = useNavigate()
   const emailValidate =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    
+
   const onSubmit = (values) => {
-    axios.post("http://localhost:5003/user/register", values).then((res)=>{
+    const data = {
+        userName: values.userName,
+        email: values.email,
+        password: values.password,
+      };
+      console.log(data);
+      const uri = "http://localhost:5003/user/register"
+
+    axios.post(uri, data).then((res)=>{
         console.log(res);
+        alert(response.data.message);
         navigate('/login')
     }).catch((err)=>{
         console.log(err);
