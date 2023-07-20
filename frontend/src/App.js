@@ -8,6 +8,17 @@ const App = ()=>  {
   const [password, setPassword] = useState("")
   const [data2, setData2] = useState([])
 
+  const register = () => {
+    const data = { userName, email, password }
+    const uri = "http://localhost:5003/users/register"
+    console.log(data)
+    axios.post(uri, data).then((response) => {
+      console.log(response)
+      alert(response.data.message)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
 
 

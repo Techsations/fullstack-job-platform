@@ -2,6 +2,8 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const cors = require("cors")
+const userRoutes = require("./routes/userRoute")
+const{errorHandler} = require("./middleware/errorHandler")
 
 
 const app = express()
@@ -10,6 +12,9 @@ app.use(bodyParser.json({limit:"100mb"}))
 app.use(bodyParser.urlencoded({ extended: true, limit: "100mb"}))
 app.use(cors({ origin: "*" }))
 
+app.use("/users", userRoutes)
+
+app.use(errorHandler)
 
 
 const uri = process.env.MONGO_URI
