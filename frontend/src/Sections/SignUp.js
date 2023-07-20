@@ -19,6 +19,30 @@ const SignUp = () =>{
     })
   };
 
+  const { handleSubmit, handleChange, errors, touched, handleBlur, values } =
+    useFormik({
+      initialValues: {
+        username: "",
+        email: "",
+        password: "",
+      },
+      validationSchema: yup.object().shape({
+        username: yup
+          .string()
+          .required("This input field cannot be empty")
+          .min(5, "Cannot be less than 5 characters"),
+        email: yup
+          .string()
+          .email()
+          .required("Email field is required"),
+        password: yup
+          .string()
+          .required("Password field cannot be empty")
+          .min(8, "Cannot be less than 8 characters"),
+      }),
+      onSubmit,
+    });
+
     return (
          <>
             <div className='mx-auto container row'>
