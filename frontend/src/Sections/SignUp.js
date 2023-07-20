@@ -9,7 +9,10 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () =>{
     // Post request
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+  const emailValidate =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    
   const onSubmit = (values) => {
     axios.post("http://localhost:5003/user/register", values).then((res)=>{
         console.log(res);
@@ -33,7 +36,7 @@ const SignUp = () =>{
           .min(5, "Cannot be less than 5 characters"),
         email: yup
           .string()
-          .email()
+          .matches(emailValidate, "Must be a valid email")
           .required("Email field is required"),
         password: yup
           .string()
