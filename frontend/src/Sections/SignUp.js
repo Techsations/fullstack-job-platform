@@ -11,7 +11,7 @@ const SignUp = () =>{
 
     const navigate = useNavigate()
   const onSubmit = (values) => {
-    axios.post("http://localhost:1010/create", values).then((res)=>{
+    axios.post("http://localhost:5003/user/register", values).then((res)=>{
         console.log(res);
         navigate('/login')
     }).catch((err)=>{
@@ -45,15 +45,57 @@ const SignUp = () =>{
 
     return (
          <>
-            <div className='mx-auto container row'>
-                <div className='col-sm-8 shadow-lg p-5 mx-auto'>
-                    <h6 className='text-muted display-6 text-center'>Sign UP</h6>
-                    <input placeholder='User name' type="text" className=" my-2 form-control w-100" onChange={(e) => { setUserName(e.target.value) }} />
-                    <input placeholder='Email' type="text" className=" my-2 form-control w-100" onChange={(e) => { setEmail(e.target.value) }} />
-                    <input placeholder='Password' type="text" className=" my-2 form-control w-100" onChange={(e) => { setPassword(e.target.value) }} />
-                    <button className=' my-2 btn btn-dark' onClick={register}>Submit</button>
-                </div>
-            </div>
+            <main>
+        <h1 className="text-primary">Sign Up</h1>
+        <form
+          className="w-50 mx-auto my-5 p-3 rounded border shadow"
+          onSubmit={handleSubmit}
+          action=""
+        >
+          <div className="mb-3">
+            <input
+              name="username"
+              type="text"
+              className={errors.username? "is-invalid form-control" : "form-control"}
+              value={values.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.username && errors.username && (
+              <small className="text-danger fw-bold">{errors.username}</small>
+            )}
+          </div>
+          <div className="mb-3">
+            <input
+              name="email"
+              type="email"
+              className={errors.email? "is-invalid form-control" : "form-control"}
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.email && errors.email && (
+              <small className="text-danger fw-bold">{errors.email}</small>
+            )}
+          </div>
+          <div className="mb-3">
+            <input
+              name="password"
+              type="password"
+              className={errors.password? "is-invalid form-control" : "form-control"}
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.password && errors.password && (
+              <small className="text-danger fw-bold">{errors.password}</small>
+            )}
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+      </main>
         </>
     )
 }
+
+export default SignUp
