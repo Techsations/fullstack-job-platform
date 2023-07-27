@@ -5,9 +5,9 @@ const bcryptjs = require("bcryptjs")
 
 const register = async (req, res) => {
     try {
-        let { userName, email, password } = req.body
+        let { username, email, password } = req.body
         const newUser = new userModel({
-            userName,
+            username,
             email,
             password
         })
@@ -32,7 +32,7 @@ const SignIn = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password)
         // const token = generateToken(email)
         if (isMatch) {
-            return res.status(200).send({ message: `Welcome, ${user.userName}`, status: true, })
+            return res.status(200).send({ message: `Welcome, ${user.username}`, status: true, })
         }
         return res.status(401).send({ message: "Invalid Password", status: false })
     } catch (error) {

@@ -15,17 +15,16 @@ const SignUp = () =>{
 
   const onSubmit = (values) => {
     const data = {
-        userName: values.userName,
+        username: values.username,
         email: values.email,
         password: values.password,
       };
       console.log(data);
-      const uri = "http://localhost:5003/user/register"
+      const uri = "http://localhost:5003/users/register"
 
     axios.post(uri, data).then((res)=>{
         console.log(res);
-        alert(response.data.message);
-        navigate('/login')
+        navigate('/SignIn')
     }).catch((err)=>{
         console.log(err);
     })

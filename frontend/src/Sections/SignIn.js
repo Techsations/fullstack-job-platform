@@ -13,7 +13,7 @@ const SignIn = () => {
     const [err, seterr] = useState("")
 
     useEffect(() => {
-        axios.get("http://localhost:5003/user/register").then((res)=>{
+        axios.get("http://localhost:5003/users/register").then((res)=>{
             setallUser(res.data)
             console.log(allUser);
         }).catch((err)=>{
@@ -25,7 +25,7 @@ const SignIn = () => {
     const onSubmit = (values)=>{
         let found = allUser.find((el)=> el.email == values.email && el.password == values.password)
         if(found){
-            axios.post("http://localhost:5003/user/login", found).then((res)=>{
+            axios.post("http://localhost:5003/users/SignIn", found).then((res)=>{
                 console.log(res);
                 navigate("/dashboard")
             }).catch((err)=>{
