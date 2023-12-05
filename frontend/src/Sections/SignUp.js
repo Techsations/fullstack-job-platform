@@ -1,112 +1,85 @@
-import React from "react";
-import { useFormik } from "formik";
-import { useState } from "react";
-import * as yup from "yup";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import EmployerSignUp from './Employer/EmployerSignUp'
+import JobSeekerSignUp from './JobSeeker/JobSeekerSignUp'
+import Loader from './Loader'
+import { useNavigate } from 'react-router-dom'
 
 
-const SignUp = () =>{
-    // Post request
+function SignUp() {
 
   const navigate = useNavigate()
-  const emailValidate =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  const onSubmit = (values) => {
-    const data = {
-        username: values.username,
-        email: values.email,
-        password: values.password,
-      };
-      console.log(data);
-      const uri = "http://localhost:5003/users/register"
+  const [isVisible, setisVisible] = useState(true)
+  const [isLoading, setisLoading] = useState(false)
+  const [isSpinning, setisSpinning] = useState(false)
 
-    axios.post(uri, data).then((res)=>{
-        console.log(res);
-        navigate('/SignIn')
-    }).catch((err)=>{
-        console.log(err);
-    })
-  };
+  const registerAsJobSeeker = () => {
+      setisSpinning(!isSpinning)
+      setTimeout(() => {
+          setisVisible(!isVisible)
+          setisSpinning(!isSpinning)
+      }, 1500);
+  }
 
-  const { handleSubmit, handleChange, errors, touched, handleBlur, values } =
-    useFormik({
-      initialValues: {
-        username: "",
-        email: "",
-        password: "",
-      },
-      validationSchema: yup.object().shape({
-        username: yup
-          .string()
-          .required("This input field cannot be empty")
-          .min(5, "Cannot be less than 5 characters"),
-        email: yup
-          .string()
-          .matches(emailValidate, "Must be a valid email")
-          .required("Email field is required"),
-        password: yup
-          .string()
-          .required("Password field cannot be empty")
-          .min(8, "Cannot be less than 8 characters"),
-      }),
-      onSubmit,
-    });
+  const registerAsEmployer = () => {
+      setisSpinning(!isSpinning)
+      setTimeout(() => {
+          setisVisible(!isVisible)
+          setisSpinning(!isSpinning)
+      }, 1500);
+  }
 
-    return (
-         <>
-            <main>
-        <h1 className="text-primary">Sign Up</h1>
-        <form
-          className="w-50 mx-auto my-5 p-3 rounded border shadow"
-          onSubmit={handleSubmit}
-          action=""
-        >
-          <div className="mb-3">
-            <input
-              name="username"
-              type="text"
-              className={errors.username? "is-invalid form-control" : "form-control"}
-              value={values.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.username && errors.username && (
-              <small className="text-danger fw-bold">{errors.username}</small>
-            )}
+  const loginAsEmployer = () => {
+      setisSpinning(!isSpinning)
+      setTimeout(() => {
+          setisSpinning(!isSpinning)
+          navigate("/employerLogin")
+      }, 1500);
+  }
+
+  const loginAsUser = () => {
+      setisSpinning(!isSpinning)
+      setTimeout(() => {
+          setisSpinning(!isSpinning)
+          navigate("/userLogin")
+      }, 1500);
+  }
+
+
+
+  return (
+      <>
+          <div className='body d-flex align-items-center justify-content-center'>
+              <div className='shadow rounded p-4 signup-box'>
+                  <div className='site-logo-div mx-auto'>
+                      <img src={require('./image/jnn.png')} alt="" className='w-100' />
+                  </div>
+                  {isVisible ?
+                      <EmployerSignUp
+                          registerAsJobSeeker={registerAsJobSeeker}
+                          setisLoading={setisLoading}
+                          isSpinning={isSpinning}
+                          loginAsEmployer={loginAsEmployer}
+                      />
+                      : <JobSeekerSignUp
+                          registerAsEmployer={registerAsEmployer}
+                          setisLoading={setisLoading}
+                          isSpinning={isSpinning}
+                          loginAsUser={loginAsUser}
+                      />}
+              </div>
+              {
+                  isLoading
+                      ?
+                      <div className='position-absolute loader-div w-100 d-flex align-items-center justify-content-center'>
+                          <Loader />
+                      </div>
+                      :
+                      null
+              }
           </div>
-          <div className="mb-3">
-            <input
-              name="email"
-              type="email"
-              className={errors.email? "is-invalid form-control" : "form-control"}
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.email && errors.email && (
-              <small className="text-danger fw-bold">{errors.email}</small>
-            )}
-          </div>
-          <div className="mb-3">
-            <input
-              name="password"
-              type="password"
-              className={errors.password? "is-invalid form-control" : "form-control"}
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.password && errors.password && (
-              <small className="text-danger fw-bold">{errors.password}</small>
-            )}
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-      </main>
-        </>
-    )
+      </>
+  )
 }
 
 export default SignUp
