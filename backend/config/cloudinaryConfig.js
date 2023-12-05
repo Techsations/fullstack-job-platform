@@ -7,7 +7,7 @@ cloudinary.config({
 
     cloud_name: 'techsations', 
     api_key: '516396577259229',
-    api_secret: '***************************'
+    api_secret: 'i022crkJt0ZTVAKAbcvU_tAhV3E'
 })
 
 module.exports = {cloudinary}
