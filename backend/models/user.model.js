@@ -88,8 +88,12 @@ const jobApplicationsSchema = new mongoose.Schema({
 })
 
 
-const employerModel = mongoose.models.employer_tbs || mongoose.model("employer_tbs", employerSchema)
+const employerModel = mongoose.models.employer_tbs || mongoose.model("employer_tbs", employerSchema)//creating an employer table with an instance of the schema
 
 const userModel = mongoose.models.user_tbs || mongoose.model("user_tbs", userSchema)
 
-module.exports = userModel
+const postedJobsModel = mongoose.models.jobs_tbs || mongoose.model("postedjobs_tbs", postedJobsSchema)//creating a Posted Jobs table with an instance of the schema
+
+const jobApplicationsModel = mongoose.models.submittedApplication_tbs || mongoose.model("jobApplication_tbs", jobApplicationsSchema)//creating a submitted application table with an instance of the schema
+
+module.exports = {userModel, employerModel, postedJobsModel, jobApplicationsModel }
