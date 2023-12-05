@@ -3,6 +3,26 @@ const bcryptjs = require("bcryptjs")
 // const { generateToken, verifyToken } = require("../services/sessions")
 
 
+const registerAsEmployer = async (req, res, next) => {
+    let { employerName, email, password } = req.body
+    // let date = DateTimeDisplay()
+    try {
+        const newUser = new employerModel({
+            employerName,
+            email,
+            password,
+            timestamp: new Date()
+        })
+        const result = await newUser.save()
+        console.log(result)
+        sendMessage(email)
+        return res.status(201).send({ message: "Registration Successful", status: true })
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+}
+
 const register = async (req, res) => {
     try {
         let { username, email, password } = req.body
@@ -40,4 +60,4 @@ const SignIn = async (req, res) => {
     }
 }
 
-module.exports = {register, SignIn}
+module.exports = {registerAsEmployer, register, SignIn}
