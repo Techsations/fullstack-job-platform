@@ -1,6 +1,6 @@
 const userModel = require("../models/user.model")
 const bcryptjs = require("bcryptjs")
-// const { generateToken, verifyToken } = require("../services/sessions")
+const { generateToken, verifyToken } = require("../services/sessions")
 
 
 const registerAsEmployer = async (req, res, next) => {
