@@ -1,36 +1,31 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const dotenv = require('dotenv');
-const userRoutes = require("./routes/userRoutes");
+const express = require("express")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
+const cors = require("cors")
+const userRoutes = require("./routes/userRoutes")
+const { errorHandler } = require("./middlewares/errorHandler")
 
 
-require("dotenv").config()
 const app = express()
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}))
+require("dotenv").config();
+app.use(bodyParser.json({limit: "100mb"}))
+app.use(bodyParser.urlencoded({ extended: true, limit: "100mb"}))
 app.use(cors({ origin: "*" }))
 app.use("/users", userRoutes)
+app.use(errorHandler)
 
 
 const port = process.env.PORT
+app.listen(port, ()=>{
+    console.log(`Server started at port ${port}`);
+})
+
 const uri = process.env.MONGO_URI
 
-
-
 const connect = async () => {
-    try {
-        mongoose.set("strictQuery", false)
-        await mongoose.connect(uri)
-        console.log("MongoDB connected")
-    } catch (error) {
-        console.log(error)
-    }
+    mongoose.set("strictQuery", false)
+    await mongoose.connect(uri)
+    console.log("MongoDB is connected");
 }
-connect()
 
-app.listen("5003", () => {
-    console.log("Server started")
-})
+connect()
