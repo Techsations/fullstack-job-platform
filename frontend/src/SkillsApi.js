@@ -15,4 +15,16 @@ const programmingSkills = [
     { id: 13, name: 'MySQL' },
     { id: 14, name: 'UI/UX' },
     { id: 15, name: 'Data Science' },
-]
+    { id: 16, name: 'MongoDB' },
+    { id: 17, name: 'Ruby' },
+    { id: 18, name: 'Angular' },
+    { id: 19, name: 'Security Best Practices' },
+    { id: 20, name: 'Testing and Debugging' },
+    { id: 21, name: 'Command Line/CLI' },
+    { id: 22, name: 'Database Management' },
+    { id: 23, name: 'Responsive Web Design' },
+    { id: 24, name: 'Front-End Frameworks and Libraries' },
+    { id: 25, name: 'Problem Solving and Troubleshooting' },
+];
+
+export default programmingSkills;
