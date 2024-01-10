@@ -17,7 +17,7 @@ function ApplyForJob() {
   const [currentJob, setcurrentJob] = useState("")
   //fetching all the posted jobs from the database
   useEffect(() => {
-    const uri = "http://localhost:5353/users/allJobs"
+    const uri = "http://localhost:5003/users/allJobs"
     axios.get(uri).then((res) => {
       console.log(res);
       let postJobs = res.data
@@ -49,7 +49,7 @@ function ApplyForJob() {
 
   const uploadFileURL = () => {
     console.log(file);
-    const uri = "http://localhost:5353/users/uploadCV"
+    const uri = "http://localhost:5003/users/uploadCV"
     const data = { cv: file }
     axios.post(uri, data).then((res) => {
       console.log(res);
