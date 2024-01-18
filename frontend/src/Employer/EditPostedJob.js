@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup'
 import NavBar from '../NavBar';
 import Banner from '../Banner';
-import SideBar from './SideBar';
+import SideBar from './Sidebar';
 import ContentContainer from '../ContentContainer';
 import axios from 'axios';
 

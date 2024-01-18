@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import SideBar from './SideBar'
+import SideBar from './Sidebar'
 import NavBar from '../NavBar'
 import ContentContainer from '../ContentContainer'
 import { useDispatch, useSelector } from 'react-redux'

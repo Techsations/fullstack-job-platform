@@ -5,7 +5,7 @@ import { getEmployer } from '../Functions/GetData';
 import NavBar from '../NavBar';
 import { Link, useNavigate } from 'react-router-dom';
 import Banner from '../Banner';
-import SideBar from './SideBar';
+import SideBar from './Sidebar';
 import ContentContainer from '../ContentContainer';
 import { timeDifference } from '../Functions/GetTimeDifference';
 import { router } from '../Router/Router';
