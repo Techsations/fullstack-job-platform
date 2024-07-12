@@ -17,7 +17,7 @@ function UserSidebar(props) {
   const [currentUser, setcurrentUser] = useState("")
 
   useEffect(() => {
-    const uri = `${router}/users/userDashboard`
+    const uri = `${router}/users/applicantDashboard`
     axios.get(uri, {
       headers: {
         Authorization: `Bearer ${userToken}`
@@ -31,7 +31,7 @@ function UserSidebar(props) {
       localStorage.removeItem("token")
       localStorage.removeItem("CU")
       localStorage.removeItem("JobID")
-      navigate("/userLogin")
+      navigate("/applicantLogin")
     })
   }, [])
 
@@ -39,7 +39,7 @@ function UserSidebar(props) {
     localStorage.removeItem("token")
     localStorage.removeItem("CU")
     localStorage.removeItem("JobID")
-    navigate("/userLogin")
+    navigate("/applicantLogin")
   }
 
   return (
@@ -76,7 +76,7 @@ function UserSidebar(props) {
           }
         </div>
         <div className='mt-4 side-menu-div mx-auto'>
-          <Link to={"/jobSeekerDashboard"} className='link'>
+          <Link to={"/applicantDashboard"} className='link'>
             <button className={props.dashboardStyle}>
               <div className='dashboard-icon-div'>
                 <i class="bi bi-ui-checks-grid fs-4"></i>

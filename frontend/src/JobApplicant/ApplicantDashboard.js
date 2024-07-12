@@ -10,7 +10,7 @@ import { getUser } from '../Functions/GetData'
 import { timeDifference } from '../Functions/GetTimeDifference'
 import { router } from '../Router/Router'
 
-function UserDashboard() {
+function ApplicantDashboard() {
     const userToken = JSON.parse(localStorage.getItem("token"))
     const navigate = useNavigate()
 
@@ -75,7 +75,7 @@ function UserDashboard() {
     return (
         <>
             <NavBar
-                userName="Abbas"
+                userName="Timmy"
             />
             <Banner />
             <UserSidebar
@@ -162,4 +162,4 @@ function UserDashboard() {
     )
 }
 
-export default UserDashboard
+export default ApplicantDashboard

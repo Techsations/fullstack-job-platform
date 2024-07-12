@@ -9,7 +9,7 @@ import { useFormik } from 'formik'
 import * as yup from "yup"
 import { router } from '../Router/Router'
 
-function ApplyForJob() {
+function ApplyJob() {
   const jobID = JSON.parse(localStorage.getItem("JobID"))
   const currentUser = JSON.parse(localStorage.getItem("CU"))
   const navigate = useNavigate()
@@ -102,7 +102,7 @@ function ApplyForJob() {
   return (
     <>
       <NavBar
-        userName="Abbas"
+        userName="Timmy"
       />
 
       <Banner />
@@ -204,4 +204,4 @@ function ApplyForJob() {
   )
 }
 
-export default ApplyForJob
+export default ApplyJob

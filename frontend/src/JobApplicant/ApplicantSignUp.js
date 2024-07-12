@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import SpinnerLoader from '../SpinnerLoader'
 import { router } from '../Router/Router'
 
-function JobSeekerSignUp({registerAsEmployer, loginAsUser, setisLoading, isSpinning}) {
+function ApplicantSignUp({registerAsEmployer, loginAsUser, setisLoading, isSpinning}) {
     // const [userEmail, setuserEmail] = useState("")
     const navigate = useNavigate()
     const onSubmit = (values, errors) => {
@@ -118,4 +118,4 @@ function JobSeekerSignUp({registerAsEmployer, loginAsUser, setisLoading, isSpinn
     )
 }
 
-export default JobSeekerSignUp
+export default ApplicantSignUp

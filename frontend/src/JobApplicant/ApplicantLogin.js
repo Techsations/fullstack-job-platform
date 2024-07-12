@@ -7,7 +7,7 @@ import { router } from '../Router/Router';
 import SpinnerLoader from '../SpinnerLoader';
 import Loader from '../Loader';
 
-function UserLogin() {
+function ApplicantLogin() {
     const navigate = useNavigate()
 
     const [isSpinning, setisSpinning] = useState(false)
@@ -16,13 +16,13 @@ function UserLogin() {
     const onSubmit = (values) => {
         setisLoading(true)
         console.log(values);
-        const uri = `${router}/users/userLogin`
+        const uri = `${router}/users/applicantLogin`
         axios.post(uri, values).then((res) => {
             console.log(res);
             localStorage.setItem("token", JSON.stringify(res.data.token))
             alert("Login Successful")
             setisLoading(false)
-            navigate("/jobSeekerDashboard")
+            navigate("/applicantDashboard")
         }).catch((err) => {
             console.log(err);
             alert(err.response.data.message)

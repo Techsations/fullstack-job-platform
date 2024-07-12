@@ -6,6 +6,7 @@ const { DateTimeDisplay } = require("../utilities/dateAndTime")
 const { cloudinary } = require("../config/cloudinaryConfig")
 
 
+
 const registerAsEmployer = async (req, res, next) => {
     let { employerName, email, password } = req.body
     // let date = DateTimeDisplay()
@@ -102,6 +103,7 @@ const updateUserSkill = async (req, res, next) => {
         next(error)
     }
 }
+
 
 const userDashboard = async (req, res, next) => {
     try {
