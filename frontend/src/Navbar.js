@@ -12,7 +12,7 @@ function Navbar(props) {
                         </div>
                     </Link>
                     <div>
-                        <p>{props.userName}</p>
+                        <p>{props.userName}</p>npm
                     </div>
                     <div className='d-flex'>
                         <div className='position-relative me-3 d-flex align-items-center justify-content-center'>

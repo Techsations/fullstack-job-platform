@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import EmployerSignUp from './Employer/EmployerSignUp'
-import JobSeekerSignUp from './JobSeeker/JobSeekerSignUp'
+import ApplicantSignUp from './JobApplicant/ApplicantSignUp'
 import Loader from './Loader'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,7 +41,7 @@ function SignUp() {
       setisSpinning(!isSpinning)
       setTimeout(() => {
           setisSpinning(!isSpinning)
-          navigate("/userLogin")
+          navigate("/applicantLogin")
       }, 1500);
   }
 
@@ -61,7 +61,7 @@ function SignUp() {
                           isSpinning={isSpinning}
                           loginAsEmployer={loginAsEmployer}
                       />
-                      : <JobSeekerSignUp
+                      : <ApplicantSignUp
                           registerAsEmployer={registerAsEmployer}
                           setisLoading={setisLoading}
                           isSpinning={isSpinning}

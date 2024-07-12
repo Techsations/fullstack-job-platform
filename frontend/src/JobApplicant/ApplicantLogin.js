@@ -110,4 +110,4 @@ function ApplicantLogin() {
     )
 }
 
-export default UserLogin
+export default ApplicantLogin

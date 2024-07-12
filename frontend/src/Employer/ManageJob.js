@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getEmployer } from '../Functions/GetData';
-import NavBar from '../NavBar';
+import Navbar from '../NavBar';
 import { Link, useNavigate } from 'react-router-dom';
 import Banner from '../Banner';
 import SideBar from './Sidebar';
@@ -67,7 +67,7 @@ function ManageJobs() {
 
     return (
         <>
-            <NavBar
+            <Navbar
                 PostJobBtn={
                     <Link to={"/postJob"}>
                         <button className="post-a-job-btn py-2 px-3 rounded-pill">Post a Job</button>
